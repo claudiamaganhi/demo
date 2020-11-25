@@ -5,12 +5,12 @@ protocol ContentProvider {
     var title: String { get }
     var body: String { get }
     var primaryButtonTitle: String { get }
-    var secundaryButtonTitle: String { get }
+    var secondaryButtonTitle: String { get }
 }
 
-protocol FeedbackDelegate {
-    func didTapPrimaryButton()
-    func didTapSecundaryButton()
+protocol FeedbackDelegate: AnyObject {
+    func didTapPrimaryButton(_ viewController: UIViewController)
+    func didTapSecondaryButton(_ viewController: UIViewController)
 }
 
 class ViewController: UIViewController {
@@ -56,13 +56,13 @@ class ViewController: UIViewController {
         return primaryButton
     }()
     
-    private lazy var secundaryButton: UIButton = {
-        let secundaryButton = UIButton()
-        secundaryButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-        secundaryButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        secundaryButton.setTitle(contentProvider?.secundaryButtonTitle, for: .normal)
-        secundaryButton.addTarget(self, action: #selector(didTapSecundaryButton), for: .touchUpInside)
-        return secundaryButton
+    private lazy var secondaryButton: UIButton = {
+        let secondaryButton = UIButton()
+        secondaryButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        secondaryButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        secondaryButton.setTitle(contentProvider?.secondaryButtonTitle, for: .normal)
+        secondaryButton.addTarget(self, action: #selector(didTapSecondaryButton), for: .touchUpInside)
+        return secondaryButton
     }()
     
     private lazy var contentStackView: UIStackView = {
@@ -70,7 +70,7 @@ class ViewController: UIViewController {
                                                               titleLabel,
                                                               bodyLabel,
                                                               primaryButton,
-                                                              secundaryButton])
+                                                              secondaryButton])
         contentStackView.axis = .vertical
         contentStackView.spacing = 30
         return contentStackView
@@ -86,7 +86,7 @@ class ViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var delegate: FeedbackDelegate?
+    private weak var delegate: FeedbackDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,11 +118,11 @@ class ViewController: UIViewController {
     
     
     @objc func didTapPrimaryButton() {
-        delegate?.didTapPrimaryButton()
+        delegate?.didTapPrimaryButton(self)
     }
     
-    @objc func didTapSecundaryButton() {
-        delegate?.didTapSecundaryButton()
+    @objc func didTapSecondaryButton() {
+        delegate?.didTapSecondaryButton(self)
     }
 }
 

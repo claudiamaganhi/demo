@@ -3,15 +3,40 @@ import UIKit
 class FirstViewController: UIViewController, FeedbackDelegate {
     
     lazy var contentController1: UIViewController = {
-        let contentProvider: ContentProvider = Info()
-        let viewController = ViewController(contentProvider: contentProvider, delegate: self)
-        return viewController
+        let content: ContentProvider = Info()
+        let nextVC = ViewController(contentProvider: content, delegate: self)
+        return nextVC
     }()
     
     lazy var contentController2: UIViewController = {
-        let contentProvider: ContentProvider = InfoTwo()
-        let viewController = ViewController(contentProvider: contentProvider, delegate: self)
-        return viewController
+        let content: ContentProvider = InfoTwo()
+        let nextVC = ViewController(contentProvider: content, delegate: self)
+        return nextVC
+    }()
+    
+    private lazy var collectionButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        button.setTitle("Collection Button", for: .normal)
+        button.addTarget(self, action: #selector(didTapCollectionButton), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var tapButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        button.setTitle("tap me", for: .normal)
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var stackView: UIStackView = {
+       let stackView = UIStackView(arrangedSubviews: [tapButton, collectionButton])
+        stackView.axis = .vertical
+        stackView.spacing = 10.0
+        return stackView
     }()
     
     override func viewDidLoad() {
@@ -22,22 +47,22 @@ class FirstViewController: UIViewController, FeedbackDelegate {
     func didTapPrimaryButton(_ viewController: UIViewController) {
         switch viewController {
         case contentController1:
-            print("did tap primary button from controller 1")
+            print("did tap primary button 1")
         case contentController2:
-            print("did tap primary button from controller 2")
+            print("did tap primary button 2")
         default:
-            print("invalid")
+            print("Invalid")
         }
     }
     
     func didTapSecondaryButton(_ viewController: UIViewController) {
         switch viewController {
         case contentController1:
-            print("did tap secondary button from controller 1")
+            print("did tap secondary button 1")
         case contentController2:
-            print("did tap secondary button from controller 2")
+            print("did tap secondary button 2")
         default:
-            print("invalid")
+            print("Invalid")
         }
     }
     
@@ -46,21 +71,18 @@ class FirstViewController: UIViewController, FeedbackDelegate {
         present(controller, animated: true, completion: nil)
     }
     
+    @objc func didTapCollectionButton() {
+        let controller = CollectionDemoViewController()
+        let navigation = UINavigationController(rootViewController: controller)
+        present(navigation, animated: true)
+    }
+    
     private func setTapMeButton() {
-        let button: UIButton = {
-            let primaryButton = UIButton()
-            primaryButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-            primaryButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-            primaryButton.setTitle("tap me", for: .normal)
-            primaryButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-            return primaryButton
-        }()
+        view.addSubview(stackView)
         
-        view.addSubview(button)
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 }
 
@@ -74,8 +96,8 @@ class Info: ContentProvider {
 
 class InfoTwo: ContentProvider {
     var image: String = "arcade"
-    var title: String = "This is the second title"
-    var body: String = "This is the sencond body"
+    var title: String = "This is the title 2"
+    var body: String = "This is the body 2"
     var primaryButtonTitle: String = "First button 2"
     var secondaryButtonTitle: String = "Second button 2"
 }

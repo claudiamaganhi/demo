@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FC4DAE825B8524D00749674 /* CollectionDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC4DAE725B8524D00749674 /* CollectionDemoViewController.swift */; };
+		0FC4DAEC25B8531100749674 /* CollectionDemoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC4DAEB25B8531100749674 /* CollectionDemoLayout.swift */; };
 		B16366482548514E003B7009 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16366472548514D003B7009 /* FirstViewController.swift */; };
 		B1C3136E25012F44000C7260 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C3136D25012F44000C7260 /* AppDelegate.swift */; };
 		B1C3137225012F44000C7260 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C3137125012F44000C7260 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0FC4DAE725B8524D00749674 /* CollectionDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDemoViewController.swift; sourceTree = "<group>"; };
+		0FC4DAEB25B8531100749674 /* CollectionDemoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDemoLayout.swift; sourceTree = "<group>"; };
 		B16366472548514D003B7009 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		B1C3136A25012F44000C7260 /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C3136D25012F44000C7260 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,9 +44,11 @@
 		B1C3136125012F44000C7260 = {
 			isa = PBXGroup;
 			children = (
+				0FC4DAEB25B8531100749674 /* CollectionDemoLayout.swift */,
 				B1C3136D25012F44000C7260 /* AppDelegate.swift */,
 				B16366472548514D003B7009 /* FirstViewController.swift */,
 				B1C3137125012F44000C7260 /* ViewController.swift */,
+				0FC4DAE725B8524D00749674 /* CollectionDemoViewController.swift */,
 				B1C3137325012F44000C7260 /* Main.storyboard */,
 				B1C3137625012F46000C7260 /* Assets.xcassets */,
 				B1C3137825012F46000C7260 /* LaunchScreen.storyboard */,
@@ -86,7 +92,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Claudia Maganhi";
 				TargetAttributes = {
 					B1C3136925012F44000C7260 = {
@@ -131,6 +137,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B16366482548514E003B7009 /* FirstViewController.swift in Sources */,
+				0FC4DAEC25B8531100749674 /* CollectionDemoLayout.swift in Sources */,
+				0FC4DAE825B8524D00749674 /* CollectionDemoViewController.swift in Sources */,
 				B1C3137225012F44000C7260 /* ViewController.swift in Sources */,
 				B1C3136E25012F44000C7260 /* AppDelegate.swift in Sources */,
 			);
@@ -184,6 +192,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -244,6 +253,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
